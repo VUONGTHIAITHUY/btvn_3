@@ -56,6 +56,18 @@ export class ImageService {
     }
   }
 
+  async getImageByUserId(userId): Promise<ApiResponse<any>> {
+    const images = await this._prismaService.image.findMany({
+      where: {
+        user_id: userId
+      }
+    })
+    return {
+      data: images,
+      statusCode: 200
+    }
+  }
+
   async create(file: Express.Multer.File, request: Request): Promise<ApiResponse<image>> {
     const url = `${request.headers['host']}/public/imgs/${file.filename}`
     const data: any = {

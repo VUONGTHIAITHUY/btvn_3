@@ -81,4 +81,16 @@ export class AuthService {
 
     return true;
   }
+
+  async getUserById(id:number):Promise<ApiResponse<users>>{
+    const user = await this._prismaService.users.findFirst({
+      where:{
+        user_id:id
+      }
+    })
+    return {
+      data:user,
+      statusCode:200
+    }
+  }
 }

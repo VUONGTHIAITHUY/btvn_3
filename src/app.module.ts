@@ -6,6 +6,7 @@ import { JwtStrategy } from './strategy/jwt.strategy';
 import { ConfigModule } from '@nestjs/config';
 import { ImageModule } from './image/image.module';
 import { CommentModule } from './comment/comment.module';
+import { SaveImageModule } from './save-image/save-image.module';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { CommentModule } from './comment/comment.module';
     }),
     AuthModule,
     ImageModule,
-    CommentModule
+    CommentModule,
+    SaveImageModule
   ],
   controllers: [AppController],
   providers: [AppService, JwtStrategy],

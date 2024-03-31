@@ -23,4 +23,9 @@ export class AuthController {
   async register(@Body() user: users): Promise<ApiResponse<any>> {
     return await this.authService.register(user);
   }
+
+  @Get(':id')
+  getUserById(@Param('id') id: string) {
+    return this.authService.getUserById(+id);
+  }
 }
